@@ -1,27 +1,13 @@
-<html>
-    <head>
-        <title>Ruth's blog</title>
-    </head>
-    <body>
-        <div>
-            <h1><strong><a href="">Site no ar!</a></strong></h1>
-            <h2><em>Em desenvolvimento...</em></h2>
-        </div>
+{% extends 'blog/base.html' %}
 
-        {% for post in posts %}
-            <div>
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
                 <p>published: {{ post.published_date }}</p>
-                <h1><a href="">{{ post.title }}</a></h1>
-                <p>{{ post.text|linebreaksbr }}</p>
             </div>
-        {% endfor %}
-        
-        <div>
-            <h1><strong>Lista de coisas a se fazer:</strong></h1>
-            <ul><li>Terminar tutorial do Django Girls;</li><li>Embelezar site;</li><li>Aplicar programação no meu dia-a-dia!</li></ul>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaksbr }}</p>
         </div>
-        <br />
-        <p>Hi there!</p>
-        <p>It works!</p>
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}
