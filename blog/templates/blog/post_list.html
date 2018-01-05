@@ -7,7 +7,15 @@
             <h1><strong><a href="">Site no ar!</a></strong></h1>
             <h2><em>Em desenvolvimento...</em></h2>
         </div>
-        <br />
+
+        {% for post in posts %}
+            <div>
+                <p>published: {{ post.published_date }}</p>
+                <h1><a href="">{{ post.title }}</a></h1>
+                <p>{{ post.text|linebreaksbr }}</p>
+            </div>
+        {% endfor %}
+        
         <div>
             <h1><strong>Lista de coisas a se fazer:</strong></h1>
             <ul><li>Terminar tutorial do Django Girls;</li><li>Embelezar site;</li><li>Aplicar programação no meu dia-a-dia!</li></ul>
